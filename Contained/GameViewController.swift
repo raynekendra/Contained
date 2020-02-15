@@ -9,24 +9,22 @@
 import UIKit
 import SpriteKit
 class GameViewController: UIViewController {
-
+    var skscene: CustomScene? = nil
+    
+    @IBOutlet weak var skview: SKView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
     
-    
-    class GamesViewController: UIViewController {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        var skscene: CustomScene? = nil
-        @IBOutlet weak var skview: SKView!
+        skscene = CustomScene(size: view.bounds.size)
         
-        override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            skscene = CustomScene(size: view.bounds.size)
-            skview.presentScene(skscene)
-        }
+        skview.presentScene(skscene)
     }
 }
